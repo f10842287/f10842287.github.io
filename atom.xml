@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>榮彬的部落格</title>
+  
+  
+  <link href="https://f10842287.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://f10842287.github.io/"/>
+  <updated>2025-05-30T18:22:06.199Z</updated>
+  <id>https://f10842287.github.io/</id>
+  
+  <author>
+    <name>鄧榮彬</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 2359: Find Closest Node to Given Two Nodes</title>
+    <link href="https://f10842287.github.io/2025/05/31/LeetCode-2359-Find-Closest-Node-to-Given-Two-Nodes/"/>
+    <id>https://f10842287.github.io/2025/05/31/LeetCode-2359-Find-Closest-Node-to-Given-Two-Nodes/</id>
+    <published>2025-05-30T17:54:55.000Z</published>
+    <updated>2025-05-30T18:22:06.199Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="題目："><a href="#題目：" class="headerlink" title="題目："></a>題目：</h2><p>給予一含有 n 個 node 的 graph (從 0 ~ n - 1)<br>每一個 node 最多有一個指出去的路徑</p><p>graph 由 索引 0 開始，長度為 n<br>edges[i] 代表 node <code>i</code> 指向的路徑<br>edges[i] &#x3D;&#x3D; -1 代表沒有可以指出去的路徑</p><p>給予 node1、node2<br>分別從 node1、node2 出發走 graph</p><p>找出 node1、node2 共通的 node 並回傳最大的距離，如果有多個答案， 回傳最小索引的 node<br>如果沒有任何答案，回傳 -1</p><h2 id="限制："><a href="#限制：" class="headerlink" title="限制："></a>限制：</h2><ul><li><code>n == edges.length</code></li><li><code>2 &lt;= n &lt;= 10^5</code></li><li><code>-1 &lt;= edges[i] &lt; n</code></li><li><code>edges[i] != i</code></li><li><code>0 &lt;= node1, node2 &lt; n</code></li></ul><h2 id="解題思路："><a href="#解題思路：" class="headerlink" title="解題思路："></a>解題思路：</h2><p>用 DFS 解，找離兩個路徑最近的節點，如果最近的節點有多個情況下，回傳最小索引的節點</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">closestMeetingNode</span>(<span class="params">self, edges, node1, node2</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type edges: List[int]</span></span><br><span class="line"><span class="string">        :type node1: int</span></span><br><span class="line"><span class="string">        :type node2: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        </span><br><span class="line">        distances_from_node1 = &#123;&#125;</span><br><span class="line">        distances_from_node2 = &#123;&#125;</span><br><span class="line">        visited_from_node1 = <span class="built_in">set</span>()</span><br><span class="line">        visited_from_node2 = <span class="built_in">set</span>()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">node, visited, distances</span>):</span><br><span class="line">            <span class="keyword">if</span> node == -<span class="number">1</span> <span class="keyword">or</span> node <span class="keyword">in</span> visited:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> node <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                visited.add(node)</span><br><span class="line">                distances[node] = <span class="built_in">len</span>(visited) - <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> edges[node] == -<span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">                </span><br><span class="line">                <span class="keyword">return</span> distances[node] + dfs(edges[node], visited, distances)</span><br><span class="line">        </span><br><span class="line">        dfs(node1, visited_from_node1, distances_from_node1)</span><br><span class="line">        dfs(node2, visited_from_node2, distances_from_node2)</span><br><span class="line">        </span><br><span class="line">        closest_node = <span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line">        smallest_max_distance = <span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(distances_from_node1, distances_from_node2)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> node <span class="keyword">in</span> distances_from_node1:</span><br><span class="line">            <span class="keyword">if</span> node <span class="keyword">in</span> distances_from_node2:</span><br><span class="line">                <span class="comment"># 計算兩個距離的最大值</span></span><br><span class="line">                max_distance = <span class="built_in">max</span>(distances_from_node1[node], distances_from_node2[node])</span><br><span class="line">                <span class="comment"># 更新最小的最大距離和對應的節點</span></span><br><span class="line">                <span class="keyword">if</span> max_distance &lt; smallest_max_distance <span class="keyword">or</span> (max_distance == smallest_max_distance <span class="keyword">and</span> node &lt; closest_node):</span><br><span class="line">                    smallest_max_distance = max_distance</span><br><span class="line">                    closest_node = node</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> closest_node <span class="keyword">if</span> closest_node != <span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>) <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;題目：&quot;&gt;&lt;a href=&quot;#題目：&quot; class=&quot;headerlink&quot; title=&quot;題目：&quot;&gt;&lt;/a&gt;題目：&lt;/h2&gt;&lt;p&gt;給予一含有 n 個 node 的 graph (從 0 ~ n - 1)&lt;br&gt;每一個 node 最多有一個指出去的路徑&lt;/p&gt;
+&lt;</summary>
+      
+    
+    
+    
+    <category term="LeetCode" scheme="https://f10842287.github.io/categories/LeetCode/"/>
+    
+    
+    <category term="Python" scheme="https://f10842287.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 2984: Divisible and Non divisible Sums Difference</title>
+    <link href="https://f10842287.github.io/2025/05/29/LeetCode-2984-Divisible-and-Non-divisible-Sums-Difference/"/>
+    <id>https://f10842287.github.io/2025/05/29/LeetCode-2984-Divisible-and-Non-divisible-Sums-Difference/</id>
+    <published>2025-05-28T16:51:11.000Z</published>
+    <updated>2025-05-30T18:22:11.648Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="題目："><a href="#題目：" class="headerlink" title="題目："></a>題目：</h2><blockquote><p>給一正整數 n 和 m<br>定義以下兩個整數<br>num1: 在 1 ~ n 之間不可被 m 整除的所有整數和<br>num2: 在 1 ~ n 之間可被 m 整除的所有整數和<br>回傳 num1 - num2</p></blockquote><h2 id="限制："><a href="#限制：" class="headerlink" title="限制："></a>限制：</h2><ul><li><code>1 &lt;= n, m &lt;= 1000</code></li></ul><h2 id="解題思路："><a href="#解題思路：" class="headerlink" title="解題思路："></a>解題思路：</h2><ul><li>直接使用 <code>python comprehension</code> 生成 1 ~ n 之間的整數和，並判斷是否<code>不可被 m 整除</code></li><li>直接使用 <code>python comprehension</code> 生成 1 ~ n 之間的整數和，並判斷是否<code>可被 m 整除</code></li><li>回傳 result</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">differenceOfSums</span>(<span class="params">self, n, m</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :type m: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        num1 = <span class="built_in">sum</span>([x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>) <span class="keyword">if</span> x % m != <span class="number">0</span>])</span><br><span class="line">        num2 = <span class="built_in">sum</span>([y <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>) <span class="keyword">if</span> y % m == <span class="number">0</span>])</span><br><span class="line">        <span class="keyword">return</span> num1 - num2</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;題目：&quot;&gt;&lt;a href=&quot;#題目：&quot; class=&quot;headerlink&quot; title=&quot;題目：&quot;&gt;&lt;/a&gt;題目：&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;給一正整數 n 和 m&lt;br&gt;定義以下兩個整數&lt;br&gt;num1: 在 1 ~ n 之間不可被 m 整除的所</summary>
+      
+    
+    
+    
+    <category term="LeetCode" scheme="https://f10842287.github.io/categories/LeetCode/"/>
+    
+    
+    <category term="Python" scheme="https://f10842287.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 0014: Longest Common Prefix</title>
+    <link href="https://f10842287.github.io/2025/05/27/LeetCode-0014-Longest-Common-Prefix/"/>
+    <id>https://f10842287.github.io/2025/05/27/LeetCode-0014-Longest-Common-Prefix/</id>
+    <published>2025-05-26T17:29:55.000Z</published>
+    <updated>2025-05-30T18:22:01.064Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="題目："><a href="#題目：" class="headerlink" title="題目："></a>題目：</h2><blockquote><p>撰寫一個函數，找出字串陣列中最長的通用 prefix 字串<br>如果沒有任何通用 prefix 字串，則回傳 “”</p></blockquote><h2 id="限制："><a href="#限制：" class="headerlink" title="限制："></a>限制：</h2><ul><li><code>1 &lt;= strs.length &lt;= 200</code></li><li><code>0 &lt;= strs[i].length &lt;= 200</code></li><li><code>strs[i] 如果不為空，則 strs[i] 只會是小寫字母</code></li></ul><h2 id="輸入輸出"><a href="#輸入輸出" class="headerlink" title="輸入輸出"></a>輸入輸出</h2><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h3><blockquote><p>Input: strs &#x3D; [“flower”,”flow”,”flight”]<br>Output: “fl”</p></blockquote><h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h3><blockquote><p>Input: strs &#x3D; [“dog”,”racecar”,”car”]<br>Output: “”<br>Explanation: There is no common prefix among the input strings.</p></blockquote><h2 id="解題思路："><a href="#解題思路：" class="headerlink" title="解題思路："></a>解題思路：</h2><ol><li>準備一個字典陣列 result 和最小字串 min_str</li><li>遍訪 strs 陣列，將 strs[i] 跟 min_str 做字元比對，利用 counter 變數紀錄最長 prefix，將結果放入 result</li><li>檢查 result 是否為空，如果是空代表裡面是空字串直接回傳 min_str，否則回傳 result 中每個 str 中最短的前輟</li></ol><p><strong>這題的時間複雜度用到了 O(n ^ m)，外層迴圈 n 次，內部迴圈 m 次 (看最小字串多長)，在想一下怎麼改善</strong></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">longestCommonPrefix</span>(<span class="params">self, strs</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type strs: List[str]</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        result = &#123;&#125;</span><br><span class="line">        min_str = <span class="built_in">min</span>(strs, key=<span class="built_in">len</span>)</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(strs)):</span><br><span class="line">            <span class="comment"># 不判斷自己本身</span></span><br><span class="line">            <span class="keyword">if</span> strs[i] == min_str:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 設定 counter 變數，計算最小字串與當前字串的相同前綴長度</span></span><br><span class="line">                counter = <span class="number">0</span></span><br><span class="line">                <span class="comment"># 比較當前字串與最小字串的每個字符</span></span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(min_str)):</span><br><span class="line">                    <span class="keyword">if</span> strs[i][j] != min_str[j]:</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        counter += <span class="number">1</span></span><br><span class="line">                <span class="comment"># 將當前字串的相同前綴長度存入結果</span></span><br><span class="line">                result[strs[i]] = min_str[:counter]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 如果 result 為空，代表 strs 中為空字串，則返回最小字串，否則則回傳 result 中最短前輟</span></span><br><span class="line">        <span class="keyword">return</span> min_str <span class="keyword">if</span> <span class="keyword">not</span> result <span class="keyword">else</span> <span class="built_in">min</span>(result.values(), key=<span class="built_in">len</span>)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;題目：&quot;&gt;&lt;a href=&quot;#題目：&quot; class=&quot;headerlink&quot; title=&quot;題目：&quot;&gt;&lt;/a&gt;題目：&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;撰寫一個函數，找出字串陣列中最長的通用 prefix 字串&lt;br&gt;如果沒有任何通用 prefix 字串，則</summary>
+      
+    
+    
+    
+    <category term="LeetCode" scheme="https://f10842287.github.io/categories/LeetCode/"/>
+    
+    
+    <category term="Python" scheme="https://f10842287.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 2900: Longest Unequal Adjacent Groups Subsequence I</title>
+    <link href="https://f10842287.github.io/2025/05/26/LeetCode-2900-Longest-Unequal-Adjacent-Groups-Subsequence-I/"/>
+    <id>https://f10842287.github.io/2025/05/26/LeetCode-2900-Longest-Unequal-Adjacent-Groups-Subsequence-I/</id>
+    <published>2025-05-26T07:47:32.000Z</published>
+    <updated>2025-05-30T18:22:07.978Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="題目："><a href="#題目：" class="headerlink" title="題目："></a>題目：</h2><p>有一字串陣列 words 和 二元陣列 groups，兩個長度皆為 length n<br>words 的子序列是交錯的，當任何兩個連續的字串在序列中，且相對應的元素在 groups 是不同的索引時<br>則為子序列</p><p>題目的要求為從 words 找出最長交錯的子陣列<br>回傳 子陣列，如果有複數答案則回傳任何一個。</p><p>words 的每個元素是獨立的</p><h2 id="限制："><a href="#限制：" class="headerlink" title="限制："></a>限制：</h2><ul><li><code>1 &lt;= n == words.length == groups.length &lt;= 100</code></li><li><code>1 &lt;= words[i].length &lt;= 10</code></li><li><code>groups[i] is 0 or 1</code></li><li><code>words[i] is lowercase letter</code></li></ul><h2 id="解題思路："><a href="#解題思路：" class="headerlink" title="解題思路："></a>解題思路：</h2><ol><li>建一個空陣列 result</li><li>把 words[0] 放進 result 陣列</li><li>遍訪 group 陣列，索引從 1 ~ range(len(groups))</li><li>當 groups[i] !&#x3D; groups[i - 1]，就放進去 result 陣列</li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">getLongestSubsequence</span>(<span class="params">self, words, groups</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type words: List[str]</span></span><br><span class="line"><span class="string">        :type groups: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[str]</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        </span><br><span class="line">        result = [words[<span class="number">0</span>]]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(groups)):</span><br><span class="line">            <span class="keyword">if</span> groups[i] != groups[i - <span class="number">1</span>]:</span><br><span class="line">                result.append(words[i])</span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;題目：&quot;&gt;&lt;a href=&quot;#題目：&quot; class=&quot;headerlink&quot; title=&quot;題目：&quot;&gt;&lt;/a&gt;題目：&lt;/h2&gt;&lt;p&gt;有一字串陣列 words 和 二元陣列 groups，兩個長度皆為 length n&lt;br&gt;words 的子序列是交錯的，當任何兩個</summary>
+      
+    
+    
+    
+    <category term="LeetCode" scheme="https://f10842287.github.io/categories/LeetCode/"/>
+    
+    
+    <category term="Python" scheme="https://f10842287.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 2942: Find Words Containing Character</title>
+    <link href="https://f10842287.github.io/2025/05/26/LeetCode-2942-Find-Words-Containing-Character/"/>
+    <id>https://f10842287.github.io/2025/05/26/LeetCode-2942-Find-Words-Containing-Character/</id>
+    <published>2025-05-26T07:10:40.000Z</published>
+    <updated>2025-05-30T18:22:09.481Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="題目："><a href="#題目：" class="headerlink" title="題目："></a>題目：</h2><p>給予一字串陣列 “words” 和一個字元 x<br>回傳符合的所有索引(以陣列表示) -&gt; 索引為 word 裡含有 ‘x’ 的字元的 key<br>(回傳的陣列有可能不照順序)</p><h2 id="限制："><a href="#限制：" class="headerlink" title="限制："></a>限制：</h2><ul><li><code>1 &lt;= words.length &lt;= 50</code></li><li><code>1 &lt;= words[i].length &lt;= 50</code></li><li><code>x is lowercase</code></li><li><code>words[i] 只包含 lowercase letter</code></li></ul><h2 id="解題思路："><a href="#解題思路：" class="headerlink" title="解題思路："></a>解題思路：</h2><ul><li>準備一個空陣列，從 words 字串陣列遍訪，如果有符合 <code>x</code> 字元，就將目前陣列的 <code>索引</code>  值放入空陣列</li><li>Python 可以直接用 <code>list comprehension</code> 生成陣列，條件判斷用 <code>[i for key, value in enumerate(words) if x in value]</code></li><li><code>enumerate</code> 對可迭代的物件進行遍訪，使用 <code>enumerate</code> 函數可以同時取得 <code>key</code> 和 <code>value</code></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findWordsContaining</span>(<span class="params">self, words, x</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type words: List[str]</span></span><br><span class="line"><span class="string">        :type x: str</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># check words length is between 1 and 50</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(words) &lt;= <span class="number">0</span> <span class="keyword">or</span> <span class="built_in">len</span>(words) &gt; <span class="number">50</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">            <span class="comment"># check each word length is between 1 and 100</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(word) &lt; <span class="number">1</span> <span class="keyword">or</span> <span class="built_in">len</span>(word) &gt; <span class="number">50</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> word.islower() <span class="keyword">is</span> <span class="literal">False</span>:</span><br><span class="line">                <span class="keyword">return</span> []</span><br><span class="line">            </span><br><span class="line"></span><br><span class="line">        <span class="comment"># check x is lowercase letter</span></span><br><span class="line">        <span class="keyword">if</span> x.islower():</span><br><span class="line">            <span class="keyword">return</span> [i <span class="keyword">for</span> i, word <span class="keyword">in</span> <span class="built_in">enumerate</span>(words) <span class="keyword">if</span> x <span class="keyword">in</span> word]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;題目：&quot;&gt;&lt;a href=&quot;#題目：&quot; class=&quot;headerlink&quot; title=&quot;題目：&quot;&gt;&lt;/a&gt;題目：&lt;/h2&gt;&lt;p&gt;給予一字串陣列 “words” 和一個字元 x&lt;br&gt;回傳符合的所有索引(以陣列表示) -&amp;gt; 索引為 word 裡含有 ‘x’</summary>
+      
+    
+    
+    
+    <category term="LeetCode" scheme="https://f10842287.github.io/categories/LeetCode/"/>
+    
+    
+    <category term="Python" scheme="https://f10842287.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo 基本設定</title>
+    <link href="https://f10842287.github.io/2025/05/26/hexo-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A/"/>
+    <id>https://f10842287.github.io/2025/05/26/hexo-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A/</id>
+    <published>2025-05-26T06:06:17.000Z</published>
+    <updated>2025-05-26T09:07:32.790Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Hexo-基本設定"><a href="#Hexo-基本設定" class="headerlink" title="Hexo 基本設定"></a>Hexo 基本設定</h1><h2 id="初始化專案"><a href="#初始化專案" class="headerlink" title="初始化專案"></a>初始化專案</h2><pre><code>hexo init [folder name]</code></pre><p>範例</p><pre><code>hexo init my-blog</code></pre><h2 id="建立新文章"><a href="#建立新文章" class="headerlink" title="建立新文章"></a>建立新文章</h2><pre><code>hexo new [layout] &lt;標題&gt;</code></pre><p>範例</p><pre><code>hexo new post &quot;第一篇文章&quot;</code></pre><h2 id="local-端啟動伺服器"><a href="#local-端啟動伺服器" class="headerlink" title="local 端啟動伺服器"></a>local 端啟動伺服器</h2><pre><code>hexo server # 預設為 http://localhost:4000/</code></pre><h2 id="調整文章內容"><a href="#調整文章內容" class="headerlink" title="調整文章內容"></a>調整文章內容</h2><p>當執行完以下指令後:</p><pre><code>hexo new post &quot;第一篇文章&quot;</code></pre><p>會在 <code>source/_posts/</code> 底下產生 .md 檔案，<code>source/_posts/第一篇文章.md</code><br>.md 檔案內容如下:</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---  </span><br><span class="line">title: 我的第一篇文章 By Hexo  </span><br><span class="line">date: 2021-03-07 17:15:57  </span><br><span class="line"><span class="section">tags:  </span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 文章標題</span></span><br><span class="line">內容自訂</span><br></pre></td></tr></table></figure><p>上面 <code>---</code> 包住的區域為 front-matter，用來敘述文章屬性，詳細參考 <a href="https://hexo.io/zh-tw/docs/front-matter">front-matter</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Hexo-基本設定&quot;&gt;&lt;a href=&quot;#Hexo-基本設定&quot; class=&quot;headerlink&quot; title=&quot;Hexo 基本設定&quot;&gt;&lt;/a&gt;Hexo 基本設定&lt;/h1&gt;&lt;h2 id=&quot;初始化專案&quot;&gt;&lt;a href=&quot;#初始化專案&quot; class=&quot;header</summary>
+      
+    
+    
+    
+    <category term="教學" scheme="https://f10842287.github.io/categories/%E6%95%99%E5%AD%B8/"/>
+    
+    
+    <category term="hexo" scheme="https://f10842287.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+</feed>

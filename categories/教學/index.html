@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>分類: 教學 | 榮彬的部落格</title><meta name="author" content="鄧榮彬"><meta name="copyright" content="鄧榮彬"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="榮彬的部落格">
+<meta property="og:url" content="https://f10842287.github.io/categories/%E6%95%99%E5%AD%B8/index.html">
+<meta property="og:site_name" content="榮彬的部落格">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://f10842287.github.io/img/people.jpg">
+<meta property="article:author" content="鄧榮彬">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://f10842287.github.io/img/people.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://f10842287.github.io/categories/%E6%95%99%E5%AD%B8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '複製成功',
+    error: '複製失敗',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '分類: 教學',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'category'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="榮彬的部落格" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/people.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><span> 分類</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/bg.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">榮彬的部落格</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><span> 分類</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">教學</h1></div></header><main class="layout" id="content-inner"><div id="category"><div class="article-sort-title">分類 - 教學</div><div class="article-sort"><div class="article-sort-item year">2025</div><div class="article-sort-item"><a class="article-sort-item-img" href="/2025/05/26/hexo-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A/" title="hexo 基本設定"><img src="/img/cover.jpg" alt="hexo 基本設定" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2025-05-26T06:06:17.000Z" title="發表於 2025-05-26 14:06:17">2025-05-26</time></div><a class="article-sort-item-title" href="/2025/05/26/hexo-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A/" title="hexo 基本設定">hexo 基本設定</a></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/people.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">鄧榮彬</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/f10842287"><i class="fab fa-github"></i><span>GitHub 連結</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><h2 align="center">一隻貓</h2>
+<img 
+src="/img/announcement.jpg" 
+alt="公告" 
+style="width: 100%; height: auto; border-radius: 10px; transition: transform 0.3s ease, box-shadow 0.3s ease;" 
+onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 10px rgb(153, 169, 191)'; this.style.cursor='pointer';" 
+onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'; this.style.cursor='default';"
+>
+</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/05/31/LeetCode-2359-Find-Closest-Node-to-Given-Two-Nodes/" title="LeetCode 2359: Find Closest Node to Given Two Nodes"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode 2359: Find Closest Node to Given Two Nodes"/></a><div class="content"><a class="title" href="/2025/05/31/LeetCode-2359-Find-Closest-Node-to-Given-Two-Nodes/" title="LeetCode 2359: Find Closest Node to Given Two Nodes">LeetCode 2359: Find Closest Node to Given Two Nodes</a><time datetime="2025-05-30T17:54:55.000Z" title="發表於 2025-05-31 01:54:55">2025-05-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/29/LeetCode-2984-Divisible-and-Non-divisible-Sums-Difference/" title="LeetCode 2984: Divisible and Non divisible Sums Difference"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode 2984: Divisible and Non divisible Sums Difference"/></a><div class="content"><a class="title" href="/2025/05/29/LeetCode-2984-Divisible-and-Non-divisible-Sums-Difference/" title="LeetCode 2984: Divisible and Non divisible Sums Difference">LeetCode 2984: Divisible and Non divisible Sums Difference</a><time datetime="2025-05-28T16:51:11.000Z" title="發表於 2025-05-29 00:51:11">2025-05-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/27/LeetCode-0014-Longest-Common-Prefix/" title="LeetCode 0014: Longest Common Prefix"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode 0014: Longest Common Prefix"/></a><div class="content"><a class="title" href="/2025/05/27/LeetCode-0014-Longest-Common-Prefix/" title="LeetCode 0014: Longest Common Prefix">LeetCode 0014: Longest Common Prefix</a><time datetime="2025-05-26T17:29:55.000Z" title="發表於 2025-05-27 01:29:55">2025-05-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/26/LeetCode-2900-Longest-Unequal-Adjacent-Groups-Subsequence-I/" title="LeetCode 2900: Longest Unequal Adjacent Groups Subsequence I"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode 2900: Longest Unequal Adjacent Groups Subsequence I"/></a><div class="content"><a class="title" href="/2025/05/26/LeetCode-2900-Longest-Unequal-Adjacent-Groups-Subsequence-I/" title="LeetCode 2900: Longest Unequal Adjacent Groups Subsequence I">LeetCode 2900: Longest Unequal Adjacent Groups Subsequence I</a><time datetime="2025-05-26T07:47:32.000Z" title="發表於 2025-05-26 15:47:32">2025-05-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/26/LeetCode-2942-Find-Words-Containing-Character/" title="LeetCode 2942: Find Words Containing Character"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode 2942: Find Words Containing Character"/></a><div class="content"><a class="title" href="/2025/05/26/LeetCode-2942-Find-Words-Containing-Character/" title="LeetCode 2942: Find Words Containing Character">LeetCode 2942: Find Words Containing Character</a><time datetime="2025-05-26T07:10:40.000Z" title="發表於 2025-05-26 15:10:40">2025-05-26</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分類</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/LeetCode/"><span class="card-category-list-name">LeetCode</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%95%99%E5%AD%B8/"><span class="card-category-list-name">教學</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>標籤</span></div><div class="card-tag-cloud"><a href="/tags/hexo/" style="font-size: 1.1em; color: #999">hexo</a> <a href="/tags/Python/" style="font-size: 1.5em; color: #99a9bf">Python</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>歸檔</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              五月 2025
+            </span>
+            <span class="card-archive-list-count">6</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div></div></div></main><footer id="footer" style="background-color: rgba(0, 0, 0, 0.6);"><div id="footer-wrap"><div class="copyright">&copy;2025 By 鄧榮彬</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日夜模式切換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到頂端"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      false 
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
