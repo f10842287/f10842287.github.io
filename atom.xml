@@ -6,7 +6,7 @@
   <link href="https://f10842287.github.io/atom.xml" rel="self"/>
   
   <link href="https://f10842287.github.io/"/>
-  <updated>2025-05-30T18:22:06.199Z</updated>
+  <updated>2025-05-31T16:35:56.800Z</updated>
   <id>https://f10842287.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 0020: Valid Parentheses</title>
+    <link href="https://f10842287.github.io/2025/06/01/LeetCode-0020-Valid-Parentheses/"/>
+    <id>https://f10842287.github.io/2025/06/01/LeetCode-0020-Valid-Parentheses/</id>
+    <published>2025-05-31T16:35:17.000Z</published>
+    <updated>2025-05-31T16:35:56.800Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="題目："><a href="#題目：" class="headerlink" title="題目："></a>題目：</h2><blockquote><p>給予字串 s<br>s 只包含 <code>(</code>、<code>)</code>、<code>&#123;</code>、<code>&#125;</code>、<code>[</code>、<code>]</code> 符號<br>判斷 s 字串是否為合法的</p></blockquote><p>合法條件</p><blockquote><ol><li>左括號必須和相同類型的括號閉合</li><li>左括號必須照正確的順序閉合</li><li>每一個右括號會有一個對應相同類型的左括號</li></ol></blockquote><h2 id="限制："><a href="#限制：" class="headerlink" title="限制："></a>限制：</h2><ul><li><code>1 &lt;= s.length &lt;= 10^4</code></li><li><code>s 只包含 ()[]&#123;&#125; 三種模式</code></li></ul><h2 id="解題思路："><a href="#解題思路：" class="headerlink" title="解題思路："></a>解題思路：</h2><ul><li>宣告一個空陣列 stack ，放每一個字元</li><li>針對 s 字串遍訪，每個字元跟 stack 最後面元素比對，如果匹配就把 stack 匹配的元素清除</li><li>如果 stack 陣列還有剩回傳 false，相反 true</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isValid</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        stack = []</span><br><span class="line">        mapping = &#123;<span class="string">&#x27;)&#x27;</span>: <span class="string">&#x27;(&#x27;</span>, <span class="string">&#x27;&#125;&#x27;</span>: <span class="string">&#x27;&#123;&#x27;</span>, <span class="string">&#x27;]&#x27;</span>: <span class="string">&#x27;[&#x27;</span>&#125;</span><br><span class="line">        <span class="keyword">for</span> char <span class="keyword">in</span> s:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 代表遇到右括號</span></span><br><span class="line">            <span class="keyword">if</span> char <span class="keyword">in</span> mapping:</span><br><span class="line">                <span class="comment"># 如果堆疊是空的，或是堆疊最頂層不是匹配的左括號就回傳 false</span></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> stack <span class="keyword">or</span> stack[-<span class="number">1</span>] != mapping[char]:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">                <span class="comment"># 如果有匹配到左括號，將堆疊最上方清除</span></span><br><span class="line">                stack.pop()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 如果是左括號，就加入堆疊</span></span><br><span class="line">                stack.append(char)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">not</span> stack</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;題目：&quot;&gt;&lt;a href=&quot;#題目：&quot; class=&quot;headerlink&quot; title=&quot;題目：&quot;&gt;&lt;/a&gt;題目：&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;給予字串 s&lt;br&gt;s 只包含 &lt;code&gt;(&lt;/code&gt;、&lt;code&gt;)&lt;/code&gt;、&lt;code&gt;&amp;</summary>
+      
+    
+    
+    
+    <category term="LeetCode" scheme="https://f10842287.github.io/categories/LeetCode/"/>
+    
+    
+    <category term="Python" scheme="https://f10842287.github.io/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode 2359: Find Closest Node to Given Two Nodes</title>
