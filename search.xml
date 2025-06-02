@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>LeetCode 3024: Type of Triangle</title>
+      <link href="/2025/06/03/LeetCode-3024-Type-of-Triangle/"/>
+      <url>/2025/06/03/LeetCode-3024-Type-of-Triangle/</url>
+      
+        <content type="html"><![CDATA[<h2 id="題目："><a href="#題目：" class="headerlink" title="題目："></a>題目：</h2><blockquote><p>給予一個整數陣列，長度為 3，每個元素為一個邊<br>陣列中 3 個邊可以組成三角形，以下為三角形種類:<br><code>當所有邊長度相同則為 正三角形</code><br><code>當兩個邊長度相同則為 等腰三角形</code><br><code>當所有邊長度不同則為 不等邊三角形</code></p></blockquote><p>回傳一個字串，表示三角形是屬於哪一種類型</p><h2 id="限制："><a href="#限制：" class="headerlink" title="限制："></a>限制：</h2><ul><li><code>nums.length == 3</code></li><li><code>1 &lt;= nums[i] &lt;= 100</code></li></ul><h2 id="解題思路："><a href="#解題思路：" class="headerlink" title="解題思路："></a>解題思路：</h2><ul><li>先把陣列由小到大排序，如果最小的兩個邊加起來沒辦法超過最大的代表沒辦法組成三角形</li><li>判斷正三角形、在判斷等腰、不等邊</li><li>如果三個邊沒辦法組成三角形輸出 None (條件: 兩邊和 &gt; 第三邊)</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">triangleType</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">        </span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        這邊注意如果用 nums.sort() 的話沒辦法解包，因為 nums.sort() 會直接更改 array 內元素且不會返回值，因此沒辦法用解包賦值給 a, b, c</span></span><br><span class="line"><span class="string">        因此這邊用 sorted(nums) 做解包</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        a, b, c = <span class="built_in">sorted</span>(nums)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> a == b <span class="keyword">and</span> b == c:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;equilateral&quot;</span></span><br><span class="line">        <span class="keyword">elif</span> a + b &gt; c:</span><br><span class="line">            <span class="keyword">if</span> a == b <span class="keyword">or</span> b == c:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;isosceles&quot;</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;scalene&quot;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;none&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode 0020: Valid Parentheses</title>
       <link href="/2025/06/01/LeetCode-0020-Valid-Parentheses/"/>
       <url>/2025/06/01/LeetCode-0020-Valid-Parentheses/</url>
