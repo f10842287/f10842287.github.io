@@ -6,7 +6,7 @@
   <link href="https://f10842287.github.io/atom.xml" rel="self"/>
   
   <link href="https://f10842287.github.io/"/>
-  <updated>2025-06-02T17:51:01.162Z</updated>
+  <updated>2025-06-03T18:37:32.781Z</updated>
   <id>https://f10842287.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 0027: Remove Element</title>
+    <link href="https://f10842287.github.io/2025/06/04/LeetCode-0027-Remove-Element/"/>
+    <id>https://f10842287.github.io/2025/06/04/LeetCode-0027-Remove-Element/</id>
+    <published>2025-06-03T18:35:30.000Z</published>
+    <updated>2025-06-03T18:37:32.781Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="題目："><a href="#題目：" class="headerlink" title="題目："></a>題目：</h2><blockquote><p>給予一個整數陣列 <code>nums</code> 和一個 整數 <code>val</code><br>就地移除陣列裡 所有 <code>val</code>，陣列的順序可能會改變<br>回傳陣列中元素不等於 <code>val</code> 的數量</p></blockquote><blockquote><p>考慮元素中不為 <code>val</code> 的數量為 <code>k</code><br>為了被接受，需要以下條件</p></blockquote><blockquote><p>改變陣列 <code>nums</code>，使 <code>nums</code> 第一個 <code>k</code> 元素包含不等於 <code>val</code> 的元素<br><code>nums</code> 剩下的元素對於 <code>nums</code> 的數量並不重要。</p></blockquote><p>回傳 <code>k</code></p><blockquote><p>Example 1:<br>Input: nums &#x3D; [3,2,2,3], val &#x3D; 3<br>Output: 2, nums &#x3D; [2,2,<em>,</em>]</p></blockquote><blockquote><p>Example 2:<br>Input: nums &#x3D; [0,1,2,2,3,0,4,2], val &#x3D; 2<br>Output: 5, nums &#x3D; [0,1,4,0,3,<em>,</em>,_]</p></blockquote><h2 id="限制："><a href="#限制：" class="headerlink" title="限制："></a>限制：</h2><ul><li>0 &lt;&#x3D; nums.length &lt;&#x3D; 100</li><li>0 &lt;&#x3D; nums[i] &lt;&#x3D; 50</li><li>0 &lt;&#x3D; val &lt;&#x3D; 100</li></ul><h2 id="解題思路："><a href="#解題思路：" class="headerlink" title="解題思路："></a>解題思路：</h2><p>題目要求 <code>就地修改</code>, 所以給予一個新的陣列回傳答案是行不通的，一定要原本的陣列</p><p>第一種方法 時間複雜度 O(n^2):<br>直接用 while 判斷 <code>nums</code> 中是否有 <code>val</code><br>有的話用 array.remove() 移除</p><p>第二種方法 時間複雜度 O(n):<br>設置一個 counter 變數，並用 for 遍訪陣列，如果當前元素不等於 <code>val</code>，將 <code>nums[counter]</code> 賦予該值覆蓋掉元素</p><p>第三種方法 時間複雜度 O(n):<br>直接用 <code>list comprehension</code> 產生更改後的陣列</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">removeElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], val: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 第一種 O(n^2)</span></span><br><span class="line">        <span class="comment"># while val in nums:</span></span><br><span class="line">        <span class="comment">#     nums.remove(val)</span></span><br><span class="line">        <span class="comment"># return len(nums)</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 第三種 O(n)</span></span><br><span class="line">        <span class="comment"># nums[:] = [num for num in nums if num != val]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 第二種 O(n)</span></span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] != val:</span><br><span class="line">                nums[count] = nums[i]</span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;題目：&quot;&gt;&lt;a href=&quot;#題目：&quot; class=&quot;headerlink&quot; title=&quot;題目：&quot;&gt;&lt;/a&gt;題目：&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;給予一個整數陣列 &lt;code&gt;nums&lt;/code&gt; 和一個 整數 &lt;code&gt;val&lt;/code&gt;&lt;br</summary>
+      
+    
+    
+    
+    <category term="LeetCode" scheme="https://f10842287.github.io/categories/LeetCode/"/>
+    
+    
+    <category term="Python" scheme="https://f10842287.github.io/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode 3024: Type of Triangle</title>
