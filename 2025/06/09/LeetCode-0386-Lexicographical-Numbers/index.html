@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LeetCode 0386: Lexicographical Numbers | 榮彬的部落格</title><meta name="author" content="鄧榮彬"><meta name="copyright" content="鄧榮彬"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="題目：給予一整數 n，回傳所有範圍為 1 ~ n 的陣列排序使用字典序排序，寫出來的演算法的時間複雜度、空間複雜度必須落在 O(n) 與 O(1)。 限制： 1 &lt;&#x3D; n &lt;&#x3D; 5 * 10^4  解題思路： 建立空陣列 result，將 1 ~ n 的數字放入 result 使用 sort()，搭配 lambda 函數判斷每一個數字轉換字串比大小，由小到大 sor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 0386: Lexicographical Numbers">
+<meta property="og:url" content="https://f10842287.github.io/2025/06/09/LeetCode-0386-Lexicographical-Numbers/index.html">
+<meta property="og:site_name" content="榮彬的部落格">
+<meta property="og:description" content="題目：給予一整數 n，回傳所有範圍為 1 ~ n 的陣列排序使用字典序排序，寫出來的演算法的時間複雜度、空間複雜度必須落在 O(n) 與 O(1)。 限制： 1 &lt;&#x3D; n &lt;&#x3D; 5 * 10^4  解題思路： 建立空陣列 result，將 1 ~ n 的數字放入 result 使用 sort()，搭配 lambda 函數判斷每一個數字轉換字串比大小，由小到大 sor">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://f10842287.github.io/img/cover.jpg">
+<meta property="article:published_time" content="2025-06-08T16:50:12.000Z">
+<meta property="article:modified_time" content="2025-06-08T16:52:19.379Z">
+<meta property="article:author" content="鄧榮彬">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://f10842287.github.io/img/cover.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "LeetCode 0386: Lexicographical Numbers",
+  "url": "https://f10842287.github.io/2025/06/09/LeetCode-0386-Lexicographical-Numbers/",
+  "image": "https://f10842287.github.io/img/cover.jpg",
+  "datePublished": "2025-06-08T16:50:12.000Z",
+  "dateModified": "2025-06-08T16:52:19.379Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "鄧榮彬",
+      "url": "https://f10842287.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://f10842287.github.io/2025/06/09/LeetCode-0386-Lexicographical-Numbers/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '複製成功',
+    error: '複製失敗',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LeetCode 0386: Lexicographical Numbers',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="榮彬的部落格" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/people.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><span> 分類</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/cover.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">榮彬的部落格</span></a><a class="nav-page-title" href="/"><span class="site-name">LeetCode 0386: Lexicographical Numbers</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><span> 分類</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">LeetCode 0386: Lexicographical Numbers</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2025-06-08T16:50:12.000Z" title="發表於 2025-06-09 00:50:12">2025-06-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2025-06-08T16:52:19.379Z" title="更新於 2025-06-09 00:52:19">2025-06-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/LeetCode/">LeetCode</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">瀏覽量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="題目："><a href="#題目：" class="headerlink" title="題目："></a>題目：</h2><p>給予一整數 <code>n</code>，回傳所有範圍為 1 ~ n 的陣列<br>排序使用字典序排序，寫出來的演算法的時間複雜度、空間複雜度必須落在 O(n) 與 O(1)。</p>
+<h2 id="限制："><a href="#限制：" class="headerlink" title="限制："></a>限制：</h2><ul>
+<li>1 &lt;&#x3D; n &lt;&#x3D; 5 * 10^4</li>
+</ul>
+<h2 id="解題思路："><a href="#解題思路：" class="headerlink" title="解題思路："></a>解題思路：</h2><ol>
+<li>建立空陣列 result，將 1 ~ n 的數字放入 result</li>
+<li>使用 sort()，搭配 lambda 函數判斷每一個數字轉換字串比大小，由小到大</li>
+<li>sort() 的時間複雜度為 O(n)</li>
+</ol>
+<p>** 這邊是直接用函數去解，也有達到題目要求的限制，如果要用 DFS 解就要用 ASCII 表去對照大小，然後建 node，步驟比較多 **</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">lexicalOrder</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 建空陣列 result</span></span><br><span class="line">        result = []</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 從 1 到 n 的每個數字都加入 result</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">            result.append(i)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 用 labmda 函數和 str() 對將數字轉成字串比較並排序</span></span><br><span class="line">        result.sort(key=<span class="keyword">lambda</span> x: <span class="built_in">str</span>(x))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://f10842287.github.io">鄧榮彬</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章連結: </span><span class="post-copyright-info"><a href="https://f10842287.github.io/2025/06/09/LeetCode-0386-Lexicographical-Numbers/">https://f10842287.github.io/2025/06/09/LeetCode-0386-Lexicographical-Numbers/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 授權協議。轉載請註明來源 <a href="https://f10842287.github.io" target="_blank">榮彬的部落格</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a></div><div class="post-share"><div class="social-share" data-image="/img/cover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/06/04/LeetCode-0027-Remove-Element/" title="LeetCode 0027: Remove Element"><img class="cover" src="/img/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">LeetCode 0027: Remove Element</div></div><div class="info-2"><div class="info-item-1">題目： 給予一個整數陣列 nums 和一個 整數 val就地移除陣列裡 所有 val，陣列的順序可能會改變回傳陣列中元素不等於 val 的數量   考慮元素中不為 val 的數量為 k為了被接受，需要以下條件   改變陣列 nums，使 nums 第一個 k 元素包含不等於 val 的元素nums 剩下的元素對於 nums 的數量並不重要。  回傳 k  Example 1:Input: nums &#x3D; [3,2,2,3], val &#x3D; 3Output: 2, nums &#x3D; [2,2,,]   Example 2:Input: nums &#x3D; [0,1,2,2,3,0,4,2], val &#x3D; 2Output: 5, nums &#x3D; [0,1,4,0,3,,,_]  限制： 0 &lt;&#x3D; nums.length &lt;&#x3D; 100 0 &lt;&#x3D; nums[i] &lt;&#x3D; 50 0 &lt;&#x3D; val &lt;&#x3D; 100  解題思路：題目要求 就地修改,...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/05/27/LeetCode-0014-Longest-Common-Prefix/" title="LeetCode 0014: Longest Common Prefix"><img class="cover" src="/img/cover.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-27</div><div class="info-item-2">LeetCode 0014: Longest Common Prefix</div></div><div class="info-2"><div class="info-item-1">題目： 撰寫一個函數，找出字串陣列中最長的通用 prefix 字串如果沒有任何通用 prefix 字串，則回傳 “”  限制： 1 &lt;= strs.length &lt;= 200 0 &lt;= strs[i].length &lt;= 200 strs[i] 如果不為空，則 strs[i] 只會是小寫字母  輸入輸出Example 1: Input: strs &#x3D; [“flower”,”flow”,”flight”]Output: “fl”  Example 2: Input: strs &#x3D; [“dog”,”racecar”,”car”]Output: “”Explanation: There is no common prefix among the input strings.  解題思路： 準備一個字典陣列 result 和最小字串 min_str 遍訪 strs 陣列，將 strs[i] 跟 min_str 做字元比對，利用 counter 變數紀錄最長 prefix，將結果放入 result 檢查 result...</div></div></div></a><a class="pagination-related" href="/2025/06/01/LeetCode-0020-Valid-Parentheses/" title="LeetCode 0020: Valid Parentheses"><img class="cover" src="/img/cover.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-01</div><div class="info-item-2">LeetCode 0020: Valid Parentheses</div></div><div class="info-2"><div class="info-item-1">題目： 給予字串 ss 只包含 (、)、&#123;、&#125;、[、] 符號判斷 s 字串是否為合法的  合法條件   左括號必須和相同類型的括號閉合 左括號必須照正確的順序閉合 每一個右括號會有一個對應相同類型的左括號   限制： 1 &lt;= s.length &lt;= 10^4 s 只包含 ()[]&#123;&#125; 三種模式  解題思路： 宣告一個空陣列 stack ，放每一個字元 針對 s 字串遍訪，每個字元跟 stack 最後面元素比對，如果匹配就把 stack 匹配的元素清除 如果 stack 陣列還有剩回傳 false，相反 true  123456789101112131415161718class Solution:    def isValid(self, s: str) -&gt; bool:        stack = []        mapping = &#123;&#x27;)&#x27;: &#x27;(&#x27;, &#x27;&#125;&#x27;: &#x27;&#123;&#x27;, &#x27;]&#x27;:...</div></div></div></a><a class="pagination-related" href="/2025/05/26/LeetCode-2942-Find-Words-Containing-Character/" title="LeetCode 2942: Find Words Containing Character"><img class="cover" src="/img/cover.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-26</div><div class="info-item-2">LeetCode 2942: Find Words Containing Character</div></div><div class="info-2"><div class="info-item-1">題目：給予一字串陣列 “words” 和一個字元 x回傳符合的所有索引(以陣列表示) -&gt; 索引為 word 裡含有 ‘x’ 的字元的 key(回傳的陣列有可能不照順序) 限制： 1 &lt;= words.length &lt;= 50 1 &lt;= words[i].length &lt;= 50 x is lowercase words[i] 只包含 lowercase letter  解題思路： 準備一個空陣列，從 words 字串陣列遍訪，如果有符合 x 字元，就將目前陣列的 索引  值放入空陣列 Python 可以直接用 list comprehension 生成陣列，條件判斷用 [i for key, value in enumerate(words) if x in value] enumerate 對可迭代的物件進行遍訪，使用 enumerate 函數可以同時取得 key 和 value  123456789101112131415161718192021222324252627class Solution(object):    def...</div></div></div></a><a class="pagination-related" href="/2025/05/26/LeetCode-2900-Longest-Unequal-Adjacent-Groups-Subsequence-I/" title="LeetCode 2900: Longest Unequal Adjacent Groups Subsequence I"><img class="cover" src="/img/cover.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-26</div><div class="info-item-2">LeetCode 2900: Longest Unequal Adjacent Groups Subsequence I</div></div><div class="info-2"><div class="info-item-1">題目：有一字串陣列 words 和 二元陣列 groups，兩個長度皆為 length nwords 的子序列是交錯的，當任何兩個連續的字串在序列中，且相對應的元素在 groups 是不同的索引時則為子序列 題目的要求為從 words 找出最長交錯的子陣列回傳 子陣列，如果有複數答案則回傳任何一個。 words 的每個元素是獨立的 限制： 1 &lt;= n == words.length == groups.length &lt;= 100 1 &lt;= words[i].length &lt;= 10 groups[i] is 0 or 1 words[i] is lowercase letter  解題思路： 建一個空陣列 result 把 words[0] 放進 result 陣列 遍訪 group 陣列，索引從 1 ~ range(len(groups)) 當 groups[i] !&#x3D; groups[i - 1]，就放進去 result 陣列  12345678910111213class Solution(object):    def...</div></div></div></a><a class="pagination-related" href="/2025/05/29/LeetCode-2984-Divisible-and-Non-divisible-Sums-Difference/" title="LeetCode 2984: Divisible and Non divisible Sums Difference"><img class="cover" src="/img/cover.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-29</div><div class="info-item-2">LeetCode 2984: Divisible and Non divisible Sums Difference</div></div><div class="info-2"><div class="info-item-1">題目： 給一正整數 n 和 m定義以下兩個整數num1: 在 1 ~ n 之間不可被 m 整除的所有整數和num2: 在 1 ~ n 之間可被 m 整除的所有整數和回傳 num1 - num2  限制： 1 &lt;= n, m &lt;= 1000  解題思路： 直接使用 python comprehension 生成 1 ~ n 之間的整數和，並判斷是否不可被 m 整除 直接使用 python comprehension 生成 1 ~ n 之間的整數和，並判斷是否可被 m 整除 回傳 result  12345678910class Solution(object):    def differenceOfSums(self, n, m):        &quot;&quot;&quot;        :type n: int        :type m: int        :rtype: int        &quot;&quot;&quot;        num1 = sum([x for x in range(1, n + 1) if x % m !=...</div></div></div></a><a class="pagination-related" href="/2025/05/31/LeetCode-2359-Find-Closest-Node-to-Given-Two-Nodes/" title="LeetCode 2359: Find Closest Node to Given Two Nodes"><img class="cover" src="/img/cover.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-31</div><div class="info-item-2">LeetCode 2359: Find Closest Node to Given Two Nodes</div></div><div class="info-2"><div class="info-item-1">題目：給予一含有 n 個 node 的 graph (從 0 ~ n - 1)每一個 node 最多有一個指出去的路徑 graph 由 索引 0 開始，長度為 nedges[i] 代表 node i 指向的路徑edges[i] &#x3D;&#x3D; -1 代表沒有可以指出去的路徑 給予 node1、node2分別從 node1、node2 出發走 graph 找出 node1、node2 共通的 node 並回傳最大的距離，如果有多個答案， 回傳最小索引的 node如果沒有任何答案，回傳 -1 限制： n == edges.length 2 &lt;= n &lt;= 10^5 -1 &lt;= edges[i] &lt; n edges[i] != i 0 &lt;= node1, node2 &lt; n  解題思路：用 DFS 解，找離兩個路徑最近的節點，如果最近的節點有多個情況下，回傳最小索引的節點 1234567891011121314151617181920212223242526272829303132333435363738394041424344class...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/people.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">鄧榮彬</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/f10842287"><i class="fab fa-github"></i><span>GitHub 連結</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><h2 align="center">一隻貓</h2>
+<img 
+src="/img/announcement.jpg" 
+alt="公告" 
+style="width: 100%; height: auto; border-radius: 10px; transition: transform 0.3s ease, box-shadow 0.3s ease;" 
+onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 10px rgb(153, 169, 191)'; this.style.cursor='pointer';" 
+onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'; this.style.cursor='default';"
+>
+</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%8C%E7%9B%AE%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">題目：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%90%E5%88%B6%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">限制：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E9%A1%8C%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">解題思路：</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/06/09/LeetCode-0386-Lexicographical-Numbers/" title="LeetCode 0386: Lexicographical Numbers"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode 0386: Lexicographical Numbers"/></a><div class="content"><a class="title" href="/2025/06/09/LeetCode-0386-Lexicographical-Numbers/" title="LeetCode 0386: Lexicographical Numbers">LeetCode 0386: Lexicographical Numbers</a><time datetime="2025-06-08T16:50:12.000Z" title="發表於 2025-06-09 00:50:12">2025-06-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/04/LeetCode-0027-Remove-Element/" title="LeetCode 0027: Remove Element"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode 0027: Remove Element"/></a><div class="content"><a class="title" href="/2025/06/04/LeetCode-0027-Remove-Element/" title="LeetCode 0027: Remove Element">LeetCode 0027: Remove Element</a><time datetime="2025-06-03T18:35:30.000Z" title="發表於 2025-06-04 02:35:30">2025-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/03/LeetCode-3024-Type-of-Triangle/" title="LeetCode 3024: Type of Triangle"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode 3024: Type of Triangle"/></a><div class="content"><a class="title" href="/2025/06/03/LeetCode-3024-Type-of-Triangle/" title="LeetCode 3024: Type of Triangle">LeetCode 3024: Type of Triangle</a><time datetime="2025-06-02T17:46:02.000Z" title="發表於 2025-06-03 01:46:02">2025-06-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/01/LeetCode-0020-Valid-Parentheses/" title="LeetCode 0020: Valid Parentheses"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode 0020: Valid Parentheses"/></a><div class="content"><a class="title" href="/2025/06/01/LeetCode-0020-Valid-Parentheses/" title="LeetCode 0020: Valid Parentheses">LeetCode 0020: Valid Parentheses</a><time datetime="2025-05-31T16:35:17.000Z" title="發表於 2025-06-01 00:35:17">2025-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/31/LeetCode-2359-Find-Closest-Node-to-Given-Two-Nodes/" title="LeetCode 2359: Find Closest Node to Given Two Nodes"><img src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LeetCode 2359: Find Closest Node to Given Two Nodes"/></a><div class="content"><a class="title" href="/2025/05/31/LeetCode-2359-Find-Closest-Node-to-Given-Two-Nodes/" title="LeetCode 2359: Find Closest Node to Given Two Nodes">LeetCode 2359: Find Closest Node to Given Two Nodes</a><time datetime="2025-05-30T17:54:55.000Z" title="發表於 2025-05-31 01:54:55">2025-05-31</time></div></div></div></div></div></div></main><footer id="footer" style="background-color: rgba(0, 0, 0, 0.6);"><div id="footer-wrap"><div class="copyright">&copy;2025 By 鄧榮彬</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日夜模式切換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂端"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      false 
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
